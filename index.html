@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comercializadora de Carbón Ayala | Tienda Oficial</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* Estilos personalizados */
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        h1, h2, h3, h4, h5, .navbar-brand {
+            font-family: 'Playfair Display', serif;
+        }
+        .badge-notificacion {
+            position: absolute;
+            top: 2px;
+            right: 5px;
+            background-color: #c0392b;
+            color: white;
+            border-radius: 50%;
+            padding: 3px 6px;
+            font-size: 0.65rem;
+        }
+        .btn-carrito-nav {
+            position: relative;
+            color: rgba(255,255,255,0.8);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            padding: 6px 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .btn-carrito-nav:hover {
+            background-color: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+        /* Ajuste para que el carrusel no sea demasiado alto en pantallas grandes */
+        .carousel-item img {
+            max-height: 500px; 
+            object-fit: cover; /* Recorta la imagen para llenar el espacio sin deformarse */
+        }
+        /* Estilo para el input de cantidad en el carrito */
+        .input-cantidad {
+            width: 50px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+            margin: 0 5px;
+            border-radius: 5px;
+        }
+        /* Quitar las flechas del input number por defecto */
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="Carbón Ayala.png" height="40" alt="Logo" class="me-2" onerror="this.style.display='none'">
+            <span class="fw-semibold">Carbón Ayala</span>
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                <li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="#productos">Colección</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                
+                <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                    <button class="btn btn-carrito-nav" data-bs-toggle="modal" data-bs-target="#modalCarrito">
+                        <i class="bi bi-bag"></i> Carrito
+                        <span id="contador-carrito" class="badge-notificacion">0</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav> 
+
+<div id="carouselCarbonAyala" class="carousel slide mb-5" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselCarbonAyala" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#carouselCarbonAyala" data-bs-slide-to="1"></button>
+    </div>
+    
+    <div class="carousel-inner shadow-sm"> 
+        <div class="carousel-item active">
+            <img src="Carbón tropical 2.png" class="d-block w-100" alt="Carbón Tropical" onerror="this.src='https://placehold.co/1200x500?text=Imagen+No+Encontrada'">
+            <div class="carousel-caption d-none d-md-block rounded-3 bg-dark bg-opacity-50 p-3">
+                <h5>Carbón Tropical</h5>
+                <p class="mb-0">La esencia de la naturaleza en tu parrilla.</p>
+            </div>
+        </div> 
+        <div class="carousel-item">
+            <img src="Briqueta 2.png" class="d-block w-100" alt="Briqueta" onerror="this.src='https://placehold.co/1200x500?text=Imagen+No+Encontrada'">
+            <div class="carousel-caption d-none d-md-block rounded-3 bg-dark bg-opacity-50 p-3">
+                <h5>Sustentabilidad</h5>
+                <p class="mb-0">Briqueta ecológica de alto rendimiento.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselCarbonAyala" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselCarbonAyala" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+    </button>
+</div>
+
+<section class="container my-5">
+    <div class="alert shadow-sm border-0 d-flex align-items-center" role="alert" style="background-color: #fffbf0; color: #b08d4b;">
+        <i class="bi bi-info-circle-fill me-2 fs-5"></i>
+        <div><strong>Aviso:</strong> Entregas a domicilio disponibles los fines de semana.</div>
+    </div>
+</section>
+
+<section class="container my-5" id="productos">
+    <h2 class="text-center mb-5">Nuestra Colección</h2>
+    <div class="row g-4 justify-content-center"> 
+        
+        <div class="col-md-4 col-lg-3"> 
+            <div class="card h-100 shadow-sm border-0">
+                <img src="Carbón Tropical.png" class="card-img-top" alt="Carbón" onerror="this.src='https://placehold.co/400x300?text=Producto'">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Carbón Tropical (20kg)</h5>
+                    <p class="text-muted small">Madera dura de larga duración.</p>
+                    <p class="fs-5 fw-bold" style="color: #1b4d3e;">$360 MXN</p>
+                    <button class="btn btn-outline-dark w-100 rounded-pill btn-sm" onclick="agregarAlCarrito('Carbón Tropical 20kg', 360)">
+                        <i class="bi bi-cart-plus"></i> Agregar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-lg-3">
+            <div class="card h-100 shadow-sm border-0">
+                <img src="Briqueta.png" class="card-img-top" alt="Briqueta" onerror="this.src='https://placehold.co/400x300?text=Producto'">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Briqueta Eco (Caja)</h5>
+                    <p class="text-muted small">Calor uniforme para hornos.</p>
+                    <p class="fs-5 fw-bold" style="color: #1b4d3e;">$150 MXN</p>
+                    <button class="btn btn-outline-dark w-100 rounded-pill btn-sm" onclick="agregarAlCarrito('Caja Briquetas', 150)">
+                        <i class="bi bi-cart-plus"></i> Agregar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-lg-3">
+            <div class="card h-100 shadow-sm border-0">
+                <img src="Jarcillería.png" class="card-img-top" alt="Ocote" onerror="this.src='https://placehold.co/400x300?text=Producto'">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Paquete de Ocote</h5>
+                    <p class="text-muted small">Iniciador de fuego natural.</p>
+                    <p class="fs-5 fw-bold" style="color: #1b4d3e;">$30 MXN</p>
+                    <button class="btn btn-outline-dark w-100 rounded-pill btn-sm" onclick="agregarAlCarrito('Paquete Ocote', 30)">
+                        <i class="bi bi-cart-plus"></i> Agregar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="servicios-especiales" class="container my-5 py-5 rounded-4 bg-light border">
+    <h2 class="mb-3 text-center">Paquetes Especiales</h2>
+    <p class="text-center text-muted mb-5">Todo lo que necesitas en un solo lugar.</p>
+
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card p-3 border-0 shadow-lg" id="card1">
+                <div class="position-relative">
+                    <img src="Carbón Tropical.png" class="card-img-top rounded-3" alt="Paquete" onerror="this.src='https://placehold.co/600x400?text=Paquete'">
+                    <span class="position-absolute top-0 end-0 bg-dark text-white px-3 py-1 m-2 rounded-pill shadow-sm small">
+                        <i class="bi bi-star-fill text-warning"></i> Más Vendido
+                    </span>
+                </div>
+                <div class="card-body text-center">
+                    <h5 class="card-title mt-2">Paquete "Maestro Parrillero"</h5>
+                    <p class="fs-4 fw-bold my-3" style="color: #c5a059;">$415 MXN</p>
+                    
+                    <ul class="list-unstyled text-muted small mb-4 bg-light p-3 rounded-3 text-start mx-auto" style="max-width: 300px;">
+                        <li><i class="bi bi-check2 text-success"></i> 1 Bulto Carbón Entero (20kg)</li>
+                        <li><i class="bi bi-check2 text-success"></i> 1 Paquete de Ocote</li>
+                        <li><i class="bi bi-check2 text-success"></i> 1 Caja de Cerillos</li>
+                    </ul>
+                    
+                    <button class="btn btn-primary w-100 rounded-pill mb-2" onclick="agregarAlCarrito('Paquete Maestro', 415)">
+                        Agregar al Carrito
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container my-5 p-5 border rounded-4" id="interactividad">
+    <h2 class="text-center mb-5">Zona Interactiva</h2>
+    <div class="row g-5">
+        <div class="col-md-4">
+            <h3>Tip del Experto</h3>
+            <button class="btn btn-outline-secondary shadow-sm rounded-pill btn-sm" onclick="mostrarAyuda()">
+                <i class="bi bi-lightbulb"></i> Ver Consejo
+            </button>
+            <div id="contenedorAyuda" class="mt-3 shadow-sm p-3 bg-white rounded" style="display:none; border-left:4px solid #198754;">
+                <p class="mb-0 small">Usa una servilleta con aceite vegetal para encender el carbón sin químicos.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h3>Calidad</h3>
+            <div id="cuadroColor" onmouseover="encenderFuego()" onmouseout="apagarFuego()" 
+                 class="p-4 text-center rounded-3 bg-light border d-flex align-items-center justify-content-center" style="height: 100px; transition: 0.3s;">
+                <span class="small text-muted">Pasa el cursor aquí</span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h3>Cotizador</h3>
+            <select id="selectProducto" class="form-select rounded-pill bg-light border-0" onchange="mostrarInfoProducto()">
+                <option value="">Selecciona producto...</option>
+                <option value="carbon">Carbón</option>
+                <option value="briqueta">Briqueta</option>
+            </select>
+            <div id="infoProducto" class="alert alert-light mt-2 small border" style="display:none;"></div>
+        </div>
+    </div>
+</section>
+
+<section class="container my-5" id="contacto">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body p-5">
+                    <h2 class="text-center mb-4">Registro & Contacto</h2>
+                    <form>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label small text-muted fw-bold">NOMBRE COMPLETO</label>
+                            <input type="text" class="form-control bg-light border-0" id="nombre" placeholder="Ej. Juan Pérez">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="asunto-select" class="form-label small text-muted fw-bold">MOTIVO</label>
+                            <select class="form-select bg-light border-0" id="asunto-select">
+                                <option selected>Selecciona una opción</option>
+                                <option value="compra">Hacer un pedido</option>
+                                <option value="facturacion">Facturación</option>
+                                <option value="otro">Otro asunto</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3 d-none" id="otro-asunto-container">
+                            <label for="otro-asunto-input" class="form-label small text-muted fw-bold">ESPECIFIQUE:</label>
+                            <input type="text" class="form-control border-warning" id="otro-asunto-input">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label small text-muted fw-bold d-block">PREFERENCIA DE CONTACTO</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="modalidad" id="whatsapp" value="wa" checked>
+                                <label class="form-check-label" for="whatsapp">WhatsApp</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="modalidad" id="correo" value="email">
+                                <label class="form-check-label" for="correo">Correo</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="Mensaje" class="form-label small text-muted fw-bold">MENSAJE</label>
+                            <textarea class="form-control bg-light border-0" id="Mensaje" rows="3"></textarea>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary rounded-pill py-2">Enviar Solicitud</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="modalCarrito" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg"> <div class="modal-content rounded-4 border-0">
+            <div class="modal-header bg-dark text-white rounded-top-4">
+                <h5 class="modal-title fs-6"><i class="bi bi-cart4"></i> Tu Carrito de Compras</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <ul id="lista-carrito" class="list-group list-group-flush mb-3">
+                    <li class="list-group-item text-center text-muted py-4">
+                        <i class="bi bi-cart-x fs-1 d-block mb-2"></i>
+                        Tu carrito está vacío.
+                    </li>
+                </ul>
+                
+                <div class="d-flex justify-content-between align-items-center border-top pt-3">
+                    <span class="small text-muted text-uppercase">Total Estimado</span>
+                    <span class="h4 fw-bold text-success mb-0" id="total-carrito">$0 MXN</span>
+                </div>
+            </div>
+            <div class="modal-footer border-0 bg-light rounded-bottom-4">
+                <button type="button" class="btn btn-link text-decoration-none text-muted" data-bs-dismiss="modal">Seguir comprando</button>
+                <button type="button" class="btn btn-success rounded-pill px-4" onclick="finalizarCompraWhatsApp()">
+                    <i class="bi bi-whatsapp"></i> Finalizar Pedido
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<section id="agregar-imagen" class="container my-5">
+  <h2 class="mb-4">Agregar Imágenes Dinámicamente</h2>
+  
+  <div class="input-group mb-3">
+    <input 
+      type="text" 
+      id="inputImagen" 
+      class="form-control" 
+      placeholder="Ingresa la URL de la imagen (ej: https://via.placeholder.com/300)">
+    <button id="btnAgregarImagen" class="btn btn-primary">
+      Agregar Imagen
+    </button>
+  </div>
+
+  <div id="galeria" class="row g-3">
+      </div>
+</section>
+
+<section class="container my-5 p-4 border rounded shadow-sm bg-light" id="seccion-tareas">
+    <h2 class="mb-3">Lista de Pendientes Operativos</h2>
+    
+    <ul id="listaTareas" class="list-group mb-3">
+        <li class="list-group-item bg-white">Verificar inventario de Mezquite (20kg)</li>
+        <li class="list-group-item bg-white">Confirmar ruta de reparto zona Centro</li>
+        <li class="list-group-item bg-white">Resurtir caja de briquetas Eco</li>
+    </ul>
+
+    <div class="input-group">
+        <input type="text" id="inputTareaNueva" class="form-control" placeholder="Nuevo pendiente...">
+        <button class="btn btn-primary" onclick="agregarTareaPendiente()">Agregar</button>
+        <button class="btn btn-danger" onclick="eliminarUltimaTarea()">Eliminar Última</button>
+    </div>
+</section>
+
+<script>
+  // === LÓGICA DE IMÁGENES DINÁMICAS ===
+  const btnAgregar = document.getElementById('btnAgregarImagen');
+  const inputUrl = document.getElementById('inputImagen');
+  const galeria = document.getElementById('galeria');
+
+  btnAgregar.addEventListener('click', function() {
+      const url = inputUrl.value;
+      if (url === "") { alert("Por favor, ingresa una URL válida."); return; }
+
+      const colDiv = document.createElement('div');
+      colDiv.className = 'col-12 col-md-4 col-lg-3';
+
+      const nuevaImagen = document.createElement('img');
+      nuevaImagen.src = url;
+      nuevaImagen.className = 'img-fluid rounded shadow-sm';
+      nuevaImagen.alt = 'Imagen agregada dinámicamente';
+
+      nuevaImagen.onerror = function() {
+          alert("La URL no corresponde a una imagen válida.");
+          colDiv.remove();
+      };
+
+      colDiv.appendChild(nuevaImagen);
+      galeria.appendChild(colDiv);
+      inputUrl.value = '';
+  });
+</script>
+<footer class="text-center py-4 mt-5 bg-dark text-secondary">
+    <div class="container">
+        <p class="mb-0 small text-uppercase spacing-2">© 2025 Comercializadora Ayala | Hecho en México</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // === 1. LÓGICA DEL CARRITO CON CANTIDADES ===
+    let carrito = [];
+    
+    // Función MODIFICADA para agrupar productos repetidos
+    function agregarAlCarrito(nombre, precio) {
+        // Buscar si el producto ya existe en el carrito
+        const productoExistente = carrito.find(p => p.nombre === nombre);
+
+        if (productoExistente) {
+            // Si ya existe, solo aumentamos la cantidad
+            productoExistente.cantidad++;
+        } else {
+            // Si no existe, lo agregamos con cantidad inicial de 1
+            carrito.push({ nombre: nombre, precio: precio, cantidad: 1 });
+        }
+        
+        actualizarInterfazCarrito();
+        // Usamos un toast o alerta simple
+        // alert("Producto agregado/actualizado en el carrito."); 
+    }
+
+    // Función nueva para modificar cantidades desde el Modal
+    function actualizarCantidad(nombre, nuevaCantidad) {
+        // Convertir a entero
+        nuevaCantidad = parseInt(nuevaCantidad);
+        
+        // Encontrar el producto
+        const producto = carrito.find(p => p.nombre === nombre);
+        
+        if (producto) {
+            if (nuevaCantidad > 0) {
+                producto.cantidad = nuevaCantidad;
+            } else {
+                // Si la cantidad es 0 o menor, preguntar si eliminar
+                if(confirm("¿Deseas eliminar este producto del carrito?")) {
+                    eliminarDelCarrito(carrito.indexOf(producto));
+                    return; // Salir de la función para no refrescar doble
+                } else {
+                    producto.cantidad = 1; // Restaurar a 1 si cancela
+                }
+            }
+        }
+        actualizarInterfazCarrito();
+    }
+
+    // Función para los botones +/-
+    function cambiarCantidadBoton(nombre, cambio) {
+        const producto = carrito.find(p => p.nombre === nombre);
+        if (producto) {
+            actualizarCantidad(nombre, producto.cantidad + cambio);
+        }
+    }
+
+    function actualizarInterfazCarrito() {
+        // Calcular conteo total de items (suma de cantidades)
+        const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+        document.getElementById('contador-carrito').textContent = totalItems;
+        
+        const lista = document.getElementById('lista-carrito');
+        const totalElemento = document.getElementById('total-carrito');
+        
+        lista.innerHTML = ''; 
+        let totalDinero = 0;
+
+        if (carrito.length === 0) {
+            lista.innerHTML = `
+                <li class="list-group-item text-center text-muted py-4">
+                    <i class="bi bi-cart-x fs-1 d-block mb-2"></i>
+                    Tu carrito está vacío.
+                </li>`;
+        } else {
+            carrito.forEach((producto, index) => {
+                const subtotal = producto.precio * producto.cantidad;
+                totalDinero += subtotal;
+                
+                lista.innerHTML += `
+                    <li class="list-group-item d-flex flex-column flex-md-row justify-content-between align-items-center py-3">
+                        <div class="mb-2 mb-md-0 text-center text-md-start">
+                            <span class="fw-bold d-block">${producto.nombre}</span>
+                            <span class="small text-muted">Unitario: $${producto.precio}</span>
+                        </div>
+                        
+                        <div class="d-flex align-items-center">
+                            <div class="input-group input-group-sm me-3" style="width: 130px;">
+                                <button class="btn btn-outline-secondary" onclick="cambiarCantidadBoton('${producto.nombre}', -1)">-</button>
+                                <input type="number" class="form-control text-center" value="${producto.cantidad}" 
+                                       onchange="actualizarCantidad('${producto.nombre}', this.value)" min="1">
+                                <button class="btn btn-outline-secondary" onclick="cambiarCantidadBoton('${producto.nombre}', 1)">+</button>
+                            </div>
+
+                            <span class="fw-bold text-success me-3" style="min-width: 70px; text-align:right;">
+                                $${subtotal}
+                            </span>
+                            
+                            <button class="btn btn-sm text-danger border-0" onclick="eliminarDelCarrito(${index})">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                    </li>
+                `;
+            });
+        }
+        totalElemento.textContent = `$${totalDinero} MXN`;
+    }
+
+    function eliminarDelCarrito(index) {
+        carrito.splice(index, 1);
+        actualizarInterfazCarrito();
+    }
+
+    function finalizarCompraWhatsApp() {
+        if (carrito.length === 0) {
+            alert("No hay productos en el carrito.");
+            return;
+        }
+        let mensaje = "Hola Comercializadora Ayala, me interesa realizar el siguiente pedido:%0A%0A";
+        let total = 0;
+        
+        carrito.forEach(prod => {
+            const subtotal = prod.precio * prod.cantidad;
+            // Formato: (x2) Carbón Tropical - $720
+            mensaje += `*(${prod.cantidad}x)* ${prod.nombre} - $${subtotal}%0A`;
+            total += subtotal;
+        });
+        
+        mensaje += `%0A*TOTAL A PAGAR: $${total} MXN*`;
+        window.open(`https://wa.me/525512345678?text=${mensaje}`, '_blank');
+    }
+
+    // === 2. INTERACTIVIDAD ===
+    function mostrarAyuda() {
+        const x = document.getElementById("contenedorAyuda");
+        x.style.display = x.style.display === "none" ? "block" : "none";
+    }
+
+    function encenderFuego() {
+        const c = document.getElementById("cuadroColor");
+        c.style.backgroundColor = "#fffbf0"; 
+        c.style.borderColor = "#c5a059";
+        c.innerHTML = "<strong style='color:#c5a059; font-family: Playfair Display'>Calidad Premium</strong>";
+    }
+
+    function apagarFuego() {
+        const c = document.getElementById("cuadroColor");
+        c.style.backgroundColor = "#f8f9fa";
+        c.style.borderColor = "#dee2e6";
+        c.innerHTML = "<span class='small text-muted'>Pasa el cursor aquí</span>";
+    }
+
+    function mostrarInfoProducto() {
+        const val = document.getElementById("selectProducto").value;
+        const div = document.getElementById("infoProducto");
+        const textos = {
+            carbon: "Carbón de mezquite seleccionado.",
+            briqueta: "Briqueta cilíndrica de alta densidad."
+        };
+        if(textos[val]) {
+            div.style.display = "block";
+            div.innerHTML = textos[val];
+        } else {
+            div.style.display = "none";
+        }
+    }
+
+    // Lógica del Select "Otro Asunto"
+    const selectAsunto = document.getElementById('asunto-select');
+    const otroAsuntoDiv = document.getElementById('otro-asunto-container');
+    if(selectAsunto){
+        selectAsunto.addEventListener('change', function() {
+            if (this.value === 'otro') {
+                otroAsuntoDiv.classList.remove('d-none');
+            } else {
+                otroAsuntoDiv.classList.add('d-none');
+            }
+        });
+    }
+
+    // === 3. LÓGICA DE LISTA DE PENDIENTES ===
+    function agregarTareaPendiente() {
+        const input = document.getElementById('inputTareaNueva');
+        const lista = document.getElementById('listaTareas');
+        
+        if (input.value.trim() === "") {
+            alert("Por favor escribe un pendiente.");
+            return;
+        }
+        const li = document.createElement('li');
+        li.className = 'list-group-item bg-white';
+        li.textContent = input.value;
+        lista.appendChild(li);
+        input.value = '';
+    }
+
+    function eliminarUltimaTarea() {
+        const lista = document.getElementById('listaTareas');
+        if (lista.lastElementChild) {
+            lista.removeChild(lista.lastElementChild);
+        } else {
+            alert("No hay pendientes para eliminar.");
+        }
+    }
+</script>
+
+</body>
+</html>
